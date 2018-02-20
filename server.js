@@ -111,8 +111,8 @@ app.delete('/recipes/:id', (req, res) => {
   res.status(204).end();
 });
 
-app.put('recipes/:id', (req, res) =>{
-  const requiredFields = ['name', 'ingredients'];
+app.put('recipes/:id', jsonParser, (req, res) => {
+  const requiredFields = ['name', 'ingredients', 'id'];
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
